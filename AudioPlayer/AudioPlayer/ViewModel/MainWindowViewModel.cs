@@ -4,10 +4,8 @@ using AudioPlayer.Services;
 using AudioPlayer.Views;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -116,7 +114,8 @@ namespace AudioPlayer.ViewModel
         private void LoginExecute()
         {
             string username = mainWindow.NameTextBox.Text;
-            
+
+            // Hash password
             var hasher = new SHA256Managed();
             var unhashed = Encoding.Unicode.GetBytes(mainWindow.passwordBox.Password);
             var hashed = hasher.ComputeHash(unhashed);
@@ -126,13 +125,14 @@ namespace AudioPlayer.ViewModel
 
             Service s = new Service();
 
+            //Checks if there is a username and password in the database
             tblUser userLogin = s.GetUsernamePassword(username, password);
 
-            if(userLogin != null)
+            if (userLogin != null)
             {
                 Xceed.Wpf.Toolkit.MessageBox.Show($"{username}, Uživajte u muzici.", "L-AudioPlayer");
 
-                
+
                 AudioPlayerMenu audioPlayer = new AudioPlayerMenu
                 {
                     Owner = mainWindow
@@ -164,7 +164,7 @@ namespace AudioPlayer.ViewModel
             }
         }
 
-        //Logout Admin
+        //Return to the login page
         private void BackLoginExecute()
         {
             mainWindow.NameTextBox.Text = "";
@@ -203,7 +203,7 @@ namespace AudioPlayer.ViewModel
             try
             {
                 Service s = new Service();
-                
+
                 string user = this.User.UsernameUser;
 
                 //uniqueness check username
@@ -226,8 +226,8 @@ namespace AudioPlayer.ViewModel
                         upperLetter++;
                     }
                 }
-                
-                if(upperLetter < 2)
+
+                if (upperLetter < 2)
                 {
                     Xceed.Wpf.Toolkit.MessageBox.Show("Lozinka mora da sadrži minimum dva velika slova.", "Lozinka");
                     return;
@@ -264,7 +264,6 @@ namespace AudioPlayer.ViewModel
             }
         }
         
-
         private bool CanSignUpExecute()
         {
             if (String.IsNullOrEmpty(user.UsernameUser) ||

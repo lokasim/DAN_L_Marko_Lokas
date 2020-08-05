@@ -59,8 +59,17 @@
                     </materialDesign:TransitioningContent.OpeningEffect>
                     <materialDesign:Card>
                         <Grid Background="Blue">
-                            <TextBlock FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">L-Audio Player</TextBlock>
-                            <TextBlock FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontStyle="Italic" Foreground="White" FontWeight="Light">DAN_L_Marko_Lokas</TextBlock>
+                            <TextBlock FontSize="50"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold">L-Audio Player</TextBlock>
+                            <TextBlock FontSize="20"
+                                       VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Center"
+                                       FontStyle="Italic"
+                                       Foreground="White"
+                                       FontWeight="Light">DAN_L_Marko_Lokas</TextBlock>
                         </Grid>
                     </materialDesign:Card>
                 </materialDesign:TransitioningContent>
@@ -228,7 +237,6 @@
                                      Width="200"
                                      Height="50"
                                      FontSize="14"></PasswordBox>
-                        
                     </StackPanel>
                 </materialDesign:TransitioningContent>
                 <!--zapamti-->
@@ -326,10 +334,7 @@
                                            VerticalAlignment="Center">
                     Nazad na prijavu</TextBlock>
                             </StackPanel>
-                            
                         </Button>
-                        
-                        
                     </StackPanel>
                 </materialDesign:TransitioningContent>
                 <materialDesign:TransitioningContent Grid.Column="1"
@@ -373,7 +378,6 @@
                         <RowDefinition Height="20"></RowDefinition>
                         <RowDefinition Height="100*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    
                     <materialDesign:TransitioningContent Grid.Row="1"
                                                          HorizontalAlignment="Center"
                                                          Margin="0,-5,0,0">
@@ -419,7 +423,6 @@
                                      TextChanged="Lozinka"
                                      PreviewKeyDown="TxtBox_PreviewKeyDown"
                                      PreviewTextInput="PreviewTextInputHandlerVelika"></TextBox>
-                           
                         </StackPanel>
                     </materialDesign:TransitioningContent>
                     <materialDesign:TransitioningContent Grid.Row="3"
@@ -444,7 +447,6 @@
                                      PreviewTextInput="PreviewTextInputHandlerVelika"></TextBox>
                         </StackPanel>
                     </materialDesign:TransitioningContent>
-                   
                     <materialDesign:TransitioningContent Grid.Row="8"
                                                          Height="45"
                                                          HorizontalAlignment="Center"

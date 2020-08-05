@@ -7,6 +7,11 @@ namespace AudioPlayer.Services
 {
     class Service
     {
+        /// <summary>
+        /// Checks if there is a username in the database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public tblUser GetUsername(string username)
         {
             try
@@ -26,6 +31,11 @@ namespace AudioPlayer.Services
             }
         }
 
+        /// <summary>
+        /// Method for adding new User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public tblUser AddUser(tblUser user)
         {
             try
@@ -66,6 +76,12 @@ namespace AudioPlayer.Services
             }
         }
 
+        /// <summary>
+        /// Return username and password on database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public tblUser GetUsernamePassword(string username, string password)
         {
             try
