@@ -60,7 +60,7 @@
                     <materialDesign:Card>
                         <Grid Background="Blue">
                             <TextBlock FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">L-Audio Player</TextBlock>
-                            <TextBlock FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontStyle="Italic" Foreground="White" FontWeight="Light">DAN_L_Marko_lokas</TextBlock>
+                            <TextBlock FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontStyle="Italic" Foreground="White" FontWeight="Light">DAN_L_Marko_Lokas</TextBlock>
                         </Grid>
                     </materialDesign:Card>
                 </materialDesign:TransitioningContent>

@@ -96,7 +96,7 @@ namespace AudioPlayer
                 else
                 {
                     tbCapsLock.Visibility = Visibility.Visible;
-                    tbCapsLock.Text = "Only letters and numbers are allowed";
+                    tbCapsLock.Text = "Dozvoljena su samo slova i brojevi.";
                     SystemSounds.Beep.Play();
                     return false;
                 }

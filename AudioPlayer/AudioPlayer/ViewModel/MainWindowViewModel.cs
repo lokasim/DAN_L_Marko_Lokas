@@ -1,6 +1,7 @@
 ﻿using AudioPlayer.Command;
 using AudioPlayer.Models;
 using AudioPlayer.Services;
+using AudioPlayer.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -130,6 +131,12 @@ namespace AudioPlayer.ViewModel
             if(userLogin != null)
             {
                 Xceed.Wpf.Toolkit.MessageBox.Show($"{username}, Uživajte u muzici.", "L-AudioPlayer");
+
+                
+
+                AudioPlayerMenu audioPlayer = new AudioPlayerMenu();
+                audioPlayer.ShowDialog();
+                mainWindow.Close();
             }
             else
             {
