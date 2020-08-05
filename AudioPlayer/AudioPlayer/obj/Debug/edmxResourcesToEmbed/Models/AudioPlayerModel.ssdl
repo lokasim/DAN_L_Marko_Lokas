@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AudioPlayerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblListenedSong">
+    <Key>
+      <PropertyRef Name="ListenedSongID" />
+    </Key>
+    <Property Name="ListenedSongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SongName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReleaseTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompletionTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ListensUser" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSong">
+    <Key>
+      <PropertyRef Name="SongID" />
+    </Key>
+    <Property Name="SongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SongName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SongAuthor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SongDuration" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="PlaylistUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsernameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PasswordUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_User_Song">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblSong" Type="Self.tblSong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblSong">
+        <PropertyRef Name="PlaylistUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AudioPlayerModelStoreContainer">
+    <EntitySet Name="tblListenedSong" EntityType="Self.tblListenedSong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSong" EntityType="Self.tblSong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_User_Song" Association="Self.FK_User_Song">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblSong" EntitySet="tblSong" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

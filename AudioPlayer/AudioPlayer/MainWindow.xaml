@@ -4,9 +4,472 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AudioPlayer"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="L-company (Login)"
+        Height="600"
+        Width="800"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Border BorderBrush="#aff000"
+            Height="600"
+            Width="800"
+            BorderThickness="3">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="Images1"
+                  Panel.ZIndex="1"
+                  Visibility="Collapsed"
+                  Grid.Column="1">
+                <materialDesign:TransitioningContent Grid.Column="1"
+                                                     Margin="20"
+                                                     Panel.ZIndex="1"
+                                                     VerticalAlignment="Top"
+                                                     HorizontalAlignment="Right">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <Button Grid.Column="1"
+                            x:Name="Exit"
+                            Command="{Binding Exit, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                            ToolTip="Exit App"
+                            BorderBrush="#FFC34A4A"
+                            Background="#FFC34A4A"
+                            Height="22"
+                            Width="22"
+                            Visibility="Visible">
+                        <materialDesign:PackIcon Kind="Close"
+                                                 Height="16"
+                                                 Width="16" />
+                    </Button>
+                </materialDesign:TransitioningContent>
+                <materialDesign:TransitioningContent HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <materialDesign:Card>
+                        <Grid Background="Blue">
+                            <TextBlock FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">L-Audio Player</TextBlock>
+                            <TextBlock FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontStyle="Italic" Foreground="White" FontWeight="Light">DAN_L_Marko_lokas</TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </materialDesign:TransitioningContent>
+            </Grid>
+            <Grid x:Name="Images0"
+                  Panel.ZIndex="1"
+                  Visibility="Collapsed"
+                  Grid.Column="0">
+                <materialDesign:TransitioningContent Grid.Column="1"
+                                                     Margin="20"
+                                                     Panel.ZIndex="1"
+                                                     VerticalAlignment="Top"
+                                                     HorizontalAlignment="Left">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <Button Grid.Column="1"
+                            x:Name="Exit0"
+                            Command="{Binding Exit, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                            ToolTip="Exit App"
+                            BorderBrush="#FFC34A4A"
+                            Background="#FFC34A4A"
+                            Height="22"
+                            Width="22"
+                            Visibility="Visible">
+                        <materialDesign:PackIcon Kind="Close"
+                                                 Height="16"
+                                                 Width="16" />
+                    </Button>
+                </materialDesign:TransitioningContent>
+                <materialDesign:TransitioningContent HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <materialDesign:Card>
+                        <Grid Background="Blue">
+                            <TextBlock FontSize="50"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold">L-Audio Player</TextBlock>
+                            <TextBlock FontSize="20"
+                                       VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Center"
+                                       FontStyle="Italic"
+                                       Foreground="White"
+                                       FontWeight="Light">DAN_L_Marko_Lokas</TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </materialDesign:TransitioningContent>
+            </Grid>
+            <TextBlock x:Name="tbCapsLock"
+                       Grid.Column="0"
+                       HorizontalAlignment="Center"
+                       Margin="0,150,0,0"
+                       Foreground="Red"
+                       FontWeight="Bold"
+                       FontSize="20"
+                       Panel.ZIndex="1"
+                       Visibility="Collapsed"
+                       Text="Neka poruka!"></TextBlock>
+            <Grid x:Name="dobroDosli"
+                  Grid.Column="0"
+                  Visibility="Collapsed">
+                <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                           HorizontalAlignment="Center"
+                           Margin="0,110,0,0"
+                           FontSize="36">
+                        Dobro došli!</TextBlock>
+                <TextBlock Foreground="Green"
+                           FontWeight="Bold"
+                           FontSize="16"
+                           Margin="0,170,0,0"
+                           HorizontalAlignment="Center">You have successfully signed up! :)</TextBlock>
+            </Grid>
+            <Grid x:Name="login"
+                  Grid.Column="0"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <materialDesign:TransitioningContent Grid.Row="0"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Top">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                               FontSize="36">
+                        Prijava</TextBlock>
+                </materialDesign:TransitioningContent>
+                <TextBlock x:Name="loginFail"
+                           Grid.Row="1"
+                           FontWeight="Bold"
+                           Foreground="Red"
+                           HorizontalAlignment="Center"
+                           Margin="5"
+                           Visibility="Collapsed">
+                Korisničko ime ili lozinka nisu tačni.</TextBlock>
+                <!--korisnicko-->
+                <materialDesign:TransitioningContent Grid.Row="1"
+                                                     Margin="-10,30,0,0"
+                                                     HorizontalAlignment="Center">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Account"
+                                                 Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}"
+                                                 VerticalAlignment="Center"
+                                                 Margin="0,10,10,10"
+                                                 HorizontalAlignment="Left" />
+                        <TextBox Margin="0,0,0,0"
+                                 ToolTip="Korisničko ime treba da sadrži minimum 6 karaktera."
+                                 TextChanged="KorekcijaImena"
+                                 MaxLength="30"
+                                 PreviewKeyDown="TxtBox_PreviewKeyDown"
+                                 PreviewTextInput="PreviewTextInputHandlerVelika"
+                                 x:Name="NameTextBox"
+                                 materialDesign:HintAssist.Hint="Korisničko ime"
+                                 Width="200"
+                                 Height="50"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 VerticalAlignment="Top"
+                                 FontSize="14"></TextBox>
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+                <!--pass-->
+                <materialDesign:TransitioningContent Grid.Row="2"
+                                                     HorizontalAlignment="Center"
+                                                     Margin="-10,30,0,0">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Key"
+                                                 Margin="0,20,10,10"
+                                                 Foreground="{Binding ElementName=passwordBox, Path=BorderBrush}"></materialDesign:PackIcon>
+                        <PasswordBox materialDesign:HintAssist.Hint="Lozinka"
+                                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                     x:Name="passwordBox"
+                                     MaxLength="35"
+                                     ToolTip="Lozinka treba da sadrži minum 6 karaktera"
+                                     PasswordChanged="KorekcijaLozinke"
+                                     PreviewKeyDown="TxtBox_PreviewKeyDown"
+                                     PreviewTextInput="PreviewTextInputHandlerVelika"
+                                     Margin="5,0,0,0"
+                                     Width="200"
+                                     Height="50"
+                                     FontSize="14"></PasswordBox>
+                        
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+                <!--zapamti-->
+                <materialDesign:TransitioningContent Grid.Row="3"
+                                                     HorizontalAlignment="Center"
+                                                     Margin="0,30,0,0">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <StackPanel Orientation="Horizontal">
+                        <!--<xctk:BusyIndicator Name="bussy" IsBusy="False">-->
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                x:Name="btnPrijavi"
+                                materialDesign:ButtonAssist.CornerRadius="20"
+                                Visibility="{Binding Path=enablePrijavi}"
+                                IsEnabled="{Binding Path=prijavi}"
+                                IsDefault="True"
+                                Height="45"
+                                FontWeight="Bold"
+                                FontSize="18"
+                                Foreground="White"
+                                Width="150"
+                                Margin="10,0,0,0"
+                                Command="{Binding Login, UpdateSourceTrigger=PropertyChanged}">Prijavite se</Button>
+                        <!--</xctk:BusyIndicator>-->
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+                <!--prijavi-->
+                <materialDesign:TransitioningContent Grid.Row="4"
+                                                     HorizontalAlignment="Center"
+                                                     Margin="20,40,0,0">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Foreground="Black"
+                               VerticalAlignment="Center"
+                               FontSize="14">Ukoliko već nemate nalog,</Label>
+                        <Button x:Name="btnRegistruj"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                Height="40"
+                                Foreground="Blue"
+                                FontSize="14"
+                                Width="135"
+                                Margin="-22,0,0,0"
+                                Click="Registruj_Click"
+                                Content="registrujte se!"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}">
+                            <!--<Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>-->
+                        </Button>
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+            </Grid>
+            <!--Registracija-->
+            <Grid Grid.Column="1"
+                  x:Name="SignUp">
+                <materialDesign:TransitioningContent Grid.Column="1">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <StackPanel Name="nazad"
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Left"
+                                Grid.Column="1"
+                                Height="70"
+                                VerticalAlignment="Top"
+                                Width="180"
+                                Orientation="Horizontal">
+                        <Button x:Name="btnVratiPrijavu"
+                                Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                Command="{Binding BackToLogin, UpdateSourceTrigger=PropertyChanged}"
+                                HorizontalAlignment="Left">
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="ArrowBackCircle"
+                                                         Width="25"
+                                                         Height="25"
+                                                         HorizontalAlignment="Left" />
+                                <TextBlock Name="btnNazad"
+                                           Margin="30 -25 0 0"
+                                           VerticalAlignment="Center">
+                    Nazad na prijavu</TextBlock>
+                            </StackPanel>
+                            
+                        </Button>
+                        
+                        
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+                <materialDesign:TransitioningContent Grid.Column="1"
+                                                     Margin="20"
+                                                     VerticalAlignment="Top"
+                                                     HorizontalAlignment="Right">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                </materialDesign:TransitioningContent>
+                <!--Naslov Registracija-->
+                <materialDesign:TransitioningContent Grid.Column="1"
+                                                     HorizontalAlignment="Center"
+                                                     Margin="0,0,0,0"
+                                                     VerticalAlignment="Top">
+                    <materialDesign:TransitioningContent.OpeningEffect>
+                        <!--animacija za sliku-->
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                         Duration="0:0:1"></materialDesign:TransitionEffect>
+                    </materialDesign:TransitioningContent.OpeningEffect>
+                    <TextBlock Name="title"
+                               Style="{StaticResource MaterialDesignTextBlock}"
+                               FontSize="30"
+                               Text="Registracija naloga"
+                               Margin="0,140,0,0"></TextBlock>
+                </materialDesign:TransitioningContent>
+                <Grid Grid.Column="1"
+                      x:Name="registracija"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      MinHeight="400"
+                      Margin="0,160,0,0"
+                      Width="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="100*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <materialDesign:TransitioningContent Grid.Row="1"
+                                                         HorizontalAlignment="Center"
+                                                         Margin="0,-5,0,0">
+                        <materialDesign:TransitioningContent.OpeningEffect>
+                            <!--animacija za sliku-->
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                             Duration="0:0:1"></materialDesign:TransitionEffect>
+                        </materialDesign:TransitioningContent.OpeningEffect>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="txtKorisnickoIme"
+                                     materialDesign:HintAssist.Hint="Korisničko ime"
+                                     Width="200"
+                                     TextChanged="Korisnicko"
+                                     MaxLength="30"
+                                     Text="{Binding User.UsernameUser, UpdateSourceTrigger=PropertyChanged}"
+                                     PreviewKeyDown="TxtBox_PreviewKeyDown"
+                                     PreviewTextInput="PreviewTextInputHandlerVelika"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Height="40"
+                                     Padding="0,-2,0,0"
+                                     Margin="0,0,0,0"
+                                     VerticalAlignment="Top"></TextBox>
+                        </StackPanel>
+                    </materialDesign:TransitioningContent>
+                    <materialDesign:TransitioningContent Grid.Row="2"
+                                                         HorizontalAlignment="Center"
+                                                         Margin="0,0,0,0">
+                        <materialDesign:TransitioningContent.OpeningEffect>
+                            <!--animacija za sliku-->
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                             Duration="0:0:1"></materialDesign:TransitionEffect>
+                        </materialDesign:TransitioningContent.OpeningEffect>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox materialDesign:HintAssist.Hint="Lozinka"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     x:Name="txtLozinkaRegistracija"
+                                     Width="200"
+                                     MaxLength="30"
+                                     Height="40"
+                                     Text="{Binding User.PasswordUser, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,0,0,0"
+                                     Padding="0,-2,0,0"
+                                     TextChanged="Lozinka"
+                                     PreviewKeyDown="TxtBox_PreviewKeyDown"
+                                     PreviewTextInput="PreviewTextInputHandlerVelika"></TextBox>
+                           
+                        </StackPanel>
+                    </materialDesign:TransitioningContent>
+                    <materialDesign:TransitioningContent Grid.Row="3"
+                                                         HorizontalAlignment="Center"
+                                                         Margin="0,0,0,0">
+                        <materialDesign:TransitioningContent.OpeningEffect>
+                            <!--animacija za sliku-->
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                             Duration="0:0:1"></materialDesign:TransitionEffect>
+                        </materialDesign:TransitioningContent.OpeningEffect>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox materialDesign:HintAssist.Hint="Ponovite lozinku"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     x:Name="txtReLozinkaRegistracija"
+                                     Width="200"
+                                     MaxLength="30"
+                                     Height="40"
+                                     Padding="0,-2,0,0"
+                                     Margin="0,0,0,0"
+                                     TextChanged="LozinkaRe"
+                                     PreviewKeyDown="TxtBox_PreviewKeyDown"
+                                     PreviewTextInput="PreviewTextInputHandlerVelika"></TextBox>
+                        </StackPanel>
+                    </materialDesign:TransitioningContent>
+                   
+                    <materialDesign:TransitioningContent Grid.Row="8"
+                                                         Height="45"
+                                                         HorizontalAlignment="Center"
+                                                         Margin="0,0,0,0">
+                        <materialDesign:TransitioningContent.OpeningEffect>
+                            <!--animacija za sliku-->
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight"
+                                                             Duration="0:0:1"></materialDesign:TransitionEffect>
+                        </materialDesign:TransitioningContent.OpeningEffect>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,0,0,0">
+                            <Button x:Name="btnRegistracija"
+                                    materialDesign:ButtonAssist.CornerRadius="20"
+                                    Height="45"
+                                    FontWeight="Bold"
+                                    IsEnabled="{Binding registruj}"
+                                    Width="150"
+                                    Margin="0,-130,0,0"
+                                    Command="{Binding SignUp, UpdateSourceTrigger=PropertyChanged}"
+                                    IsDefault="True">Registrujte se</Button>
+                        </StackPanel>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>
+
