@@ -133,10 +133,12 @@ namespace AudioPlayer.ViewModel
                 Xceed.Wpf.Toolkit.MessageBox.Show($"{username}, Uživajte u muzici.", "L-AudioPlayer");
 
                 
-
-                AudioPlayerMenu audioPlayer = new AudioPlayerMenu();
+                AudioPlayerMenu audioPlayer = new AudioPlayerMenu
+                {
+                    Owner = mainWindow
+                };
+                mainWindow.Hide();
                 audioPlayer.ShowDialog();
-                mainWindow.Close();
             }
             else
             {

@@ -27,7 +27,7 @@
                   Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"></RowDefinition>
-                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
                     <RowDefinition Height="40*"></RowDefinition>
                     <RowDefinition Height="120"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -48,28 +48,184 @@
                     Content="L-Audio Player">
                
             </Label></TextBlock>
+                <Button Grid.Column="1"
+                        x:Name="Exit0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Command="{Binding Exit, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                        ToolTip="Exit App"
+                        BorderBrush="#FFC34A4A"
+                        Background="#FFC34A4A"
+                        Height="22"
+                        Width="22"
+                        Margin="20 10"
+                        Visibility="Visible">
+                    <materialDesign:PackIcon Kind="Close"
+                                             Height="16"
+                                             Width="16" />
+                </Button>
                 <Grid Grid.Row="1">
+                    <Border Grid.Row="0"
+                            BorderThickness="0"
+                            Margin="20,0,20,0"
+                            Height="1"
+                            Background="#2196F3"
+                            CornerRadius="5"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"></Border>
                     
                 </Grid>
                 <Grid Grid.Row="2">
-                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="68*" />
+                        <ColumnDefinition Width="43*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Plejlista"
+                               FontWeight="Light"
+                               FontSize="20"
+                               Height="30"
+                               FontStyle="Italic"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Margin="20 10 0 0"
+                               Grid.ColumnSpan="2"></TextBlock>
+                    <Grid HorizontalAlignment="Right" Width="300" Margin="0 0 -150 0">
+                        <StackPanel VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,10,80,0">
+                            <Button x:Name="btnDodajPesmu"
+                                    Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                    ToolTip="Dodaj pesmu"
+                                    Margin="0"
+                                    Width="30"
+                                    Height="30"
+                                    Background="#FF8BC34A"
+                                    BorderBrush="{x:Null}">
+                                <materialDesign:PackIcon VerticalAlignment="Center"
+                                                         HorizontalAlignment="Center"
+                                                         Kind="Add"
+                                                         Height="20"
+                                                         Width="20" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,10,40,0">
+                            <Button x:Name="btnIzmeniPesmu"
+                                    Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                    ToolTip="Izmeni pesmu"
+                                    Margin="0"
+                                    Width="30"
+                                    Height="30"
+                                    Background="#FFF9BD16"
+                                    BorderBrush="{x:Null}">
+                                <materialDesign:PackIcon VerticalAlignment="Center"
+                                                         HorizontalAlignment="Center"
+                                                         Kind="Pencil"
+                                                         Height="20"
+                                                         Width="20" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="100,10,0,0">
+                            <Button x:Name="btnObrisiPesmu"
+                                    Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                    ToolTip="Obriši pesmu"
+                                    Margin="0"
+                                    Width="30"
+                                    Height="30"
+                                    Background="#FFC34A4A"
+                                    BorderBrush="{x:Null}">
+                                <materialDesign:PackIcon VerticalAlignment="Center"
+                                                         HorizontalAlignment="Center"
+                                                         Kind="Trash"
+                                                         Height="20"
+                                                         Width="20" />
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <DataGrid Name="DataGridSong"
+                              ItemsSource="{Binding AllSongList, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding AllSong, UpdateSourceTrigger=PropertyChanged}"
+                              IsReadOnly="True"
+                              FontSize="14"
+                              Height="285"
+                              Width="405"
+                              Margin="20,50,0,0"
+                              MinColumnWidth="75"
+                              MaxWidth="405"
+                              Background="White"
+                              BorderBrush="#72bbf7"
+                              BorderThickness="1"
+                              AlternatingRowBackground="#72bbf7"
+                              HorizontalContentAlignment="Center"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              MaxColumnWidth="200"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Left"
+                              HeadersVisibility="Column"
+                              AutoGenerateColumns="False"
+                              Foreground="White"
+                              FontWeight="Medium"
+                              Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Duration"
+                                                Binding="{Binding SongDuration}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping"
+                                                Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Izvođač"
+                                                Binding="{Binding SongAuthor}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping"
+                                                Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Naziv pesme"
+                                                Binding="{Binding SongName}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping"
+                                                Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <TextBlock Background="#aff000" Width="324" Height="10" Margin="80 40 0 0">
-                        
-                    </TextBlock>
+                    <Border Grid.Row="0"
+                            BorderThickness="0"
+                            Margin="20,0,20,0"
+                            Height="1"
+                            Background="#2196F3"
+                            CornerRadius="5"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"></Border>
+                    <TextBlock Background="#aff000"
+                               Width="324"
+                               Height="10"
+                               Margin="80 40 0 0"></TextBlock>
                     <TextBlock Text="Autor"
                                FontWeight="Light"
                                FontSize="20"
                                Height="30"
                                Margin="100 -80 0 0"></TextBlock>
-                    <TextBlock 
-                               Text="Naziv pesme"
+                    <TextBlock Text="Naziv pesme"
                                FontWeight="Bold"
                                FontSize="20"
                                Height="30"
                                Margin="100 -20 0 0"></TextBlock>
-                    <TextBlock Text="Duration: 03:20"
+                    <TextBlock Text="Duration: 00:00"
                                FontWeight="Light"
                                FontSize="20"
                                Height="30"
@@ -84,7 +240,7 @@
                             Margin="20,0,0,0"
                             Width="60"
                             Height="60"
-                            Command="{Binding Save, UpdateSourceTrigger=PropertyChanged}"
+                            Command="{Binding Play, UpdateSourceTrigger=PropertyChanged}"
                             Background="#2196F3"
                             BorderBrush="{x:Null}">
                         <materialDesign:PackIcon VerticalAlignment="Center"
