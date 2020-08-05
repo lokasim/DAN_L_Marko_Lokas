@@ -63,8 +63,24 @@ namespace AudioPlayer.Services
                 MessageBox.Show("Nešto je pošlo po zlu prilikom registracije", "Greška");
                 System.Diagnostics.Debug.WriteLine("Exception: " + ex.Message.ToString());
                 return null;
-                throw;
+            }
+        }
 
+        public tblUser GetUsernamePassword(string username, string password)
+        {
+            try
+            {
+                using (AudioPlayerEntities context = new AudioPlayerEntities())
+                {
+                    tblUser user = (from e in context.tblUsers where e.UsernameUser.Equals(username) where e.PasswordUser.Equals(password) select e).First();
+                    
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
             }
         }
     }

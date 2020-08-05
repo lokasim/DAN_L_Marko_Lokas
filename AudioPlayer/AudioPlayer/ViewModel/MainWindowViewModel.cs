@@ -110,11 +110,31 @@ namespace AudioPlayer.ViewModel
         }
 
         /// <summary>
-        /// Method for login employee or manager
+        /// Method for login user
         /// </summary>
         private void LoginExecute()
         {
-           
+            string username = mainWindow.NameTextBox.Text;
+            
+            var hasher = new SHA256Managed();
+            var unhashed = Encoding.Unicode.GetBytes(mainWindow.passwordBox.Password);
+            var hashed = hasher.ComputeHash(unhashed);
+            var hashedPassword = Convert.ToBase64String(hashed);
+
+            string password = hashedPassword;
+
+            Service s = new Service();
+
+            tblUser userLogin = s.GetUsernamePassword(username, password);
+
+            if(userLogin != null)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show($"{username}, Uživajte u muzici.", "L-AudioPlayer");
+            }
+            else
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime ili lozinka nisu ispravni,\n pokušajte opet.", "Nalog nije pronađen.");
+            }
         }
 
         private bool CanLoginExecute()
@@ -168,7 +188,7 @@ namespace AudioPlayer.ViewModel
                 return signUp;
             }
         }
-        //Create new employee/manager
+        //Create new user
         private void SignUpExecute()
         {
             try
@@ -216,11 +236,17 @@ namespace AudioPlayer.ViewModel
                 IsUpdateUser = true;
 
                 string poruka = "Add User: " + this.User.UsernameUser;
-                Xceed.Wpf.Toolkit.MessageBox.Show(poruka, "successfully added employee", MessageBoxButton.OK);
-                
+                Xceed.Wpf.Toolkit.MessageBox.Show(poruka, "Successfully added User", MessageBoxButton.OK);
+
+                mainWindow.NameTextBox.Text = "";
+                mainWindow.passwordBox.Password = "";
                 mainWindow.txtKorisnickoIme.Text = "";
                 mainWindow.txtLozinkaRegistracija.Text = "";
                 mainWindow.txtReLozinkaRegistracija.Text = "";
+                mainWindow.login.Visibility = Visibility.Visible;
+                mainWindow.Images0.Visibility = Visibility.Collapsed;
+                mainWindow.Images1.Visibility = Visibility.Visible;
+                mainWindow.SignUp.Visibility = Visibility.Collapsed;
                 mainWindow.NameTextBox.Focus();
             }
             catch (Exception ex)
