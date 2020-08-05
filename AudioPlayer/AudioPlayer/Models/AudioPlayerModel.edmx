@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AudioPlayerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblListenedSong">
+          <Key>
+            <PropertyRef Name="ListenedSongID" />
+          </Key>
+          <Property Name="ListenedSongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SongName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReleaseTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompletionTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ListensUser" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSong">
+          <Key>
+            <PropertyRef Name="SongID" />
+          </Key>
+          <Property Name="SongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SongName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SongAuthor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SongDuration" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="PlaylistUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsernameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_User_Song">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblSong" Type="Self.tblSong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblSong">
+              <PropertyRef Name="PlaylistUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AudioPlayerModelStoreContainer">
+          <EntitySet Name="tblListenedSong" EntityType="Self.tblListenedSong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSong" EntityType="Self.tblSong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_User_Song" Association="Self.FK_User_Song">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblSong" EntitySet="tblSong" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AudioPlayerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblListenedSong">
+          <Key>
+            <PropertyRef Name="ListenedSongID" />
+          </Key>
+          <Property Name="ListenedSongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SongName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReleaseTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompletionTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ListensUser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSong">
+          <Key>
+            <PropertyRef Name="SongID" />
+          </Key>
+          <Property Name="SongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SongName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SongAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SongDuration" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlaylistUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_User_Song" FromRole="tblSong" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsernameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblSongs" Relationship="Self.FK_User_Song" FromRole="tblUser" ToRole="tblSong" />
+        </EntityType>
+        <Association Name="FK_User_Song">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblSong" Type="Self.tblSong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblSong">
+              <PropertyRef Name="PlaylistUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AudioPlayerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblListenedSongs" EntityType="Self.tblListenedSong" />
+          <EntitySet Name="tblSongs" EntityType="Self.tblSong" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <AssociationSet Name="FK_User_Song" Association="Self.FK_User_Song">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblSong" EntitySet="tblSongs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AudioPlayerModelStoreContainer" CdmEntityContainer="AudioPlayerEntities">
+          <EntitySetMapping Name="tblListenedSongs">
+            <EntityTypeMapping TypeName="AudioPlayerModel.tblListenedSong">
+              <MappingFragment StoreEntitySet="tblListenedSong">
+                <ScalarProperty Name="ListenedSongID" ColumnName="ListenedSongID" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="ReleaseTime" ColumnName="ReleaseTime" />
+                <ScalarProperty Name="CompletionTime" ColumnName="CompletionTime" />
+                <ScalarProperty Name="ListensUser" ColumnName="ListensUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSongs">
+            <EntityTypeMapping TypeName="AudioPlayerModel.tblSong">
+              <MappingFragment StoreEntitySet="tblSong">
+                <ScalarProperty Name="SongID" ColumnName="SongID" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="SongAuthor" ColumnName="SongAuthor" />
+                <ScalarProperty Name="SongDuration" ColumnName="SongDuration" />
+                <ScalarProperty Name="PlaylistUser" ColumnName="PlaylistUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="AudioPlayerModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UsernameUser" ColumnName="UsernameUser" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

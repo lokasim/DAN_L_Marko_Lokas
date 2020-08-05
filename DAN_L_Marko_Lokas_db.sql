@@ -37,8 +37,8 @@ IF OBJECT_ID('tblListenedSong', 'U') IS NOT NULL
 -- Create tables
 CREATE TABLE tblUser(
 	UserID				int identity(1,1) NOT NULL,
-	UsernameUser		nvarchar (30) NOT NULL,
-	PasswordUser		nvarchar (30) NOT NULL
+	UsernameUser		nvarchar (50) NOT NULL,
+	PasswordUser		nvarchar (50) NOT NULL
 	)
 CREATE TABLE tblSong(
 	SongID			int identity(1,1) NOT NULL,
